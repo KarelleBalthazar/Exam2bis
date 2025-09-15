@@ -1,20 +1,20 @@
 package main
 
-func SplitWhitesSpace(s string) []string {
-	var livre []string
-	var mot string
-	for i := 0; i < len(s); i++ {
-		if s[i] != ' ' && s[i] != '\n' && s[i] != '\t' {
-			mot += string(s[i])
-		} else {
-			if mot != "" {
-				livre = append(livre, mot)
-				mot = ""
+func SplitWhitespaces(s string) []string {
+	var words []string
+	word := ""
+	for _, r := range s {
+		if r == ' ' || r == '\t' || r == '\n' {
+			if word != "" {
+				words = append(words, word)
+				word = ""
 			}
+		} else {
+			word += string(r)
 		}
 	}
-	if mot != "" {
-		livre = append(livre, mot)
+	if word != "" {
+		words = append(words, word)
 	}
-	return livre
+	return words
 }
